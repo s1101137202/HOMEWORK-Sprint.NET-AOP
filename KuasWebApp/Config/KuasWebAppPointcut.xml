@@ -3,20 +3,18 @@
          xmlns:aop="http://www.springframework.net/aop">
 
   <object id="debogLogInterceptor" type="KuasCore.Interceptors.DebogLogInterceptor" />
-  <object id="updateEmployeeNameInterceptor" type="KuasCore.Interceptors.updateEmployeeNameInterceptor" />
-  
+  <object id="updateEmployeeNameInterceptor" type="KuasCore.Interceptors.UpdateEmployeeNameInterceptor" />
+
   <object id="servicePointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
     <property name="Pattern" value="KuasCore.Services.Impl.*Service" />
   </object>
 
-  <object id="updateEmployeeNameInterceptor" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
+  <object id="updateEmployeePointcut" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
     <property name="Pattern" value="KuasCore.Services.Impl.EmployeeService.GetEmployeeById" />
   </object>
 
-  
-  
   <aop:config>
-    <aop:advisor pointcut-ref="servicePointcut" advice-ref="debogLogInterceptor" />
+    <!--<aop:advisor pointcut-ref="servicePointcut" advice-ref="debogLogInterceptor" />-->
     <aop:advisor pointcut-ref="updateEmployeePointcut" advice-ref="updateEmployeeNameInterceptor" />
   </aop:config>
 
